@@ -1,7 +1,7 @@
 # FlowSync AI TODO
 
 ## Previous UI Enhancement Steps (Completed)
-### 1. [ ] Install Dependencies
+### 1. [x] Install Dependencies
 - `npm i next-themes`
 
 ### 2. [x] Update Tailwind Config
@@ -31,6 +31,13 @@
 - Short description: "Intelligent AI traffic management system: real-time monitoring, AI predictions, automated traffic signals. React + FastAPI + PostgreSQL."
 - README.md reviewed and optimized for GitHub
 
+## Backport Commit 53b1f1d1 (In Progress)
+### 1. [ ] Install GitHub CLI
+### 2. [ ] Add upstream remote
+### 3. [ ] Fetch upstream
+### 4. [ ] Cherry-pick or manual changes
+### 5. [ ] Create branch & PR
+
 ## Run Full Project Steps
 ### 1. [x] Create backend/.env from .env.example
 
@@ -45,4 +52,4 @@
 ### 6. [ ] Seed mock data
 
 ### 7. [ ] Verify full stack (login, dashboard, websockets)
-**Progress: Deps installing...**
+**Progress: Backporting upstream commit 53b1f1d1...**
