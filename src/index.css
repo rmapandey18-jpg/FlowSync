@@ -1,0 +1,276 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 206 44% 7%;
+    --foreground: 210 40% 96%;
+
+    --card: 208 32% 11%;
+    --card-foreground: 210 40% 96%;
+
+    --popover: 208 32% 10%;
+    --popover-foreground: 210 40% 96%;
+
+    --primary: 187 96% 58%;
+    --primary-foreground: 208 44% 8%;
+
+    --secondary: 28 94% 62%;
+    --secondary-foreground: 20 20% 8%;
+
+    --muted: 214 24% 16%;
+    --muted-foreground: 214 20% 70%;
+
+    --accent: 156 72% 45%;
+    --accent-foreground: 20 20% 8%;
+
+    --destructive: 0 84% 67%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 210 22% 22%;
+    --input: 210 22% 22%;
+    --ring: 187 96% 58%;
+
+    --radius: 1rem;
+
+    --surface-1: 208 34% 10%;
+    --surface-2: 210 30% 13%;
+    --surface-3: 212 26% 16%;
+
+    --sidebar-background: 208 34% 9%;
+    --sidebar-foreground: 210 40% 96%;
+    --sidebar-primary: 187 96% 58%;
+    --sidebar-primary-foreground: 208 44% 8%;
+    --sidebar-accent: 212 26% 16%;
+    --sidebar-accent-foreground: 210 40% 96%;
+    --sidebar-border: 210 22% 22%;
+    --sidebar-ring: 187 96% 58%;
+  }
+
+  :root[data-theme='light'] {
+    --background: 0 0% 100%;
+    --foreground: 240 5.3% 26%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 5.3% 26%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 5.3% 26%;
+
+    --primary: 344.4 84.4% 47.8%;
+    --primary-foreground: 21 100% 99%;
+
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 240 5.3% 26%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.3% 26%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 344.4 84.4% 47.8%;
+
+    --surface-1: 0 0% 98%;
+    --surface-2: 240 5.9% 90%;
+    --surface-3: 240 3.7% 83.9%;
+
+    --sidebar-background: 0 0% 99%;
+    --sidebar-foreground: 240 5.3% 26%;
+    --sidebar-primary: 344.4 84.4% 47.8%;
+    --sidebar-primary-foreground: 21 100% 99%;
+    --sidebar-accent: 240 5.9% 90%;
+    --sidebar-accent-foreground: 240 5.3% 26%;
+    --sidebar-border: 240 5.9% 90%;
+    --sidebar-ring: 344.4 84.4% 47.8%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    background: hsl(var(--background));
+  }
+
+  body {
+    @apply min-h-screen bg-background font-sans text-foreground antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(34, 211, 238, 0.14), transparent 36%),
+      radial-gradient(circle at top right, rgba(251, 146, 60, 0.12), transparent 28%),
+      linear-gradient(180deg, rgba(6, 12, 22, 0.98), rgba(8, 16, 28, 1));
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: rgba(34, 211, 238, 0.32);
+    color: white;
+  }
+}
+
+@layer utilities {
+  .panel-shell {
+border border-white/10 dark:border-white/10
+  }
+
+  .panel-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 28%);
+  }
+
+  .glow-hover {
+    transition: all 0.3s ease;
+  }
+
+  .glow-hover:hover {
+    filter: drop-shadow(0 0 20px hsl(var(--primary)/0.5));
+  }
+
+  .card-gentle {
+    @apply animate-gentle-float hover:scale-[1.02] transition-all duration-500;
+  }
+
+  .metric-shell {
+    @apply rounded-[26px] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)];
+  }
+
+  .data-pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/20 px-3 py-1.5 text-xs uppercase tracking-[0.18em] text-slate-300;
+  }
+
+  .section-kicker {
+    @apply inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] uppercase tracking-[0.28em] text-primary;
+  }
+
+  .soft-label {
+    @apply text-[11px] uppercase tracking-[0.28em] text-slate-400;
+  }
+
+  .status-dot {
+    @apply inline-block h-2.5 w-2.5 rounded-full;
+  }
+
+  .command-grid {
+    background-color: rgba(5, 11, 20, 0.88);
+    background-image:
+      linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+      radial-gradient(circle at center, rgba(34, 211, 238, 0.08), transparent 48%);
+    background-size: 44px 44px, 44px 44px, 100% 100%;
+  }
+
+  .signal-ring {
+    box-shadow:
+      0 0 0 6px rgba(255, 255, 255, 0.04),
+      0 0 24px rgba(34, 211, 238, 0.25);
+  }
+
+  .panel-shell {
+    opacity: 0;
+    transform: translateY(18px);
+    will-change: opacity, transform;
+    animation: fadeInUp 0.75s ease-out 0.1s forwards;
+  }
+
+  .animate-pulse-slow {
+    animation: pulseGlow 4s ease-in-out infinite;
+  }
+
+  .animate-float-soft {
+    animation: floatSoft 6s ease-in-out infinite;
+  }
+}
+
+@keyframes scanner {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(420px);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(34, 211, 238, 0.12);
+  }
+
+  50% {
+    box-shadow: 0 0 30px 8px rgba(34, 211, 238, 0.12);
+  }
+}
+
+@keyframes floatSoft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow: 0 0 5px hsl(var(--primary)/0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px hsl(var(--primary)/0.6), 0 0 40px hsl(var(--primary)/0.4);
+  }
+}
+
+@keyframes slideInFromBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes rotateSubtle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
